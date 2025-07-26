@@ -1,0 +1,60 @@
+.card2-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #4a6fa5;
+
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card2-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.card2-container .section1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.card2-container .section1 h3{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.card2-container .section3 .red{
+    color: rgb(222, 23, 23);
+    font-weight: 600;
+}
+
+.card2-container .section3 .green{
+    color: rgb(42, 194, 113);
+        font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+.card2-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card2-container .section1 {
+  border-bottom: 1px solid rgba(117, 117, 117, 0.474);
+}
+
+.card2-container .section2 {
+  margin-bottom: 10px;
+}
+
+}
+
+

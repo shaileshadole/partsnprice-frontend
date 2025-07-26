@@ -1,0 +1,113 @@
+/* .card3-container *{
+  border: 1px solid red;
+} */
+
+.card3-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 80%;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 20px;
+  margin: 0 auto 20px auto; /* ✅ Center it horizontally */
+
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-left: 4px solid #4a6fa5;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card3-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.card3-container .section1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.card3-container .section1 h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.card3-container .section1 img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.card3-container .ccsection2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  /* margin-top: 20px; */
+}
+
+.card3-container .ccsection2 .ccsection4 .editicon {
+  font-size: 1.3rem;
+  margin: 0 5px;
+  color: rgb(22, 22, 179);
+  cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card3-container .ccsection2 .ccsection4 .editicon:hover {
+  font-size: 1.4rem;
+}
+
+.card3-container .ccsection2 .ccsection4 .deleteicon {
+  font-size: 1.3rem;
+  margin: 0 5px;
+  color: rgb(222, 23, 23);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card3-container .ccsection2 .ccsection4 .deleteicon:hover {
+  font-size: 1.4rem;
+}
+
+.card3-container .ccsection3 {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card3-container .ccsection3 .red {
+  color: rgb(222, 23, 23);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .card3-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card3-container .section1 {
+    border-bottom: 1px solid rgba(117, 117, 117, 0.474);
+  }
+
+  .card3-container .ccsection2 {
+    /* margin: 0 auto 10px auto; */
+    width: 100%;
+    margin: 10px 0px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(117, 117, 117, 0.474);
+
+  }
+}

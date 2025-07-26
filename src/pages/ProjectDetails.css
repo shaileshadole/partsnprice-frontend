@@ -1,0 +1,219 @@
+.partsPage-container hr {
+  margin-top: 5px;
+  width: 100%;
+  color: rgba(115, 115, 115, 0.277);
+}
+
+.partsPage-container .diva {
+  max-width: 1300px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.partsPage-container .section1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.partsPage-container .section1 button {
+  padding: 10px;
+  color: #1c5df6;
+  border-color: #1c5df6;
+  background: transparent;
+  border-radius: 10px;
+
+  font-weight: 500;
+
+  line-height: 12px;
+  transition: all 0.2s ease;
+}
+
+.partsPage-container .section1 button:hover {
+  background-color: #e8e8e8;
+  cursor: pointer;
+}
+
+.partsPage-container .section1 button .icon {
+  font-size: 1.3rem;
+}
+
+.partsPage-container .section1 p {
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+  color: rgb(89, 89, 89);
+}
+
+/* Parent container for the cards */
+.partsPage-container .section2 {
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Style for each Card1 */
+.partsPage-container .section2 > * {
+  width: 300px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .partsPage-container .section2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .partsPage-container .section2 > * {
+    width: 100%; /* full width on mobile */
+    max-width: 95%; /* small padding from sides */
+  }
+
+  .partsPage-container .diva {
+    padding: 10px;
+  }
+  .partsPage-container .section3 {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.partsPage-container .section3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+
+  /* border: 1px solid red; */
+}
+
+.partsPage-container .section3 button {
+  color: #ffffff;
+  background-color: #1c5df6;
+
+  /* min-height: 60px;
+  width: 100%; */
+
+  padding: 13px;
+  border-radius: 10px;
+
+  font-weight: 600;
+  border: none;
+  outline: none;
+
+  transition: background-color 0.2s ease;
+}
+
+.partsPage-container .section3 button:hover {
+  background-color: #1649c4;
+  cursor: pointer;
+}
+
+.diva2 {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+
+
+.partsPage-container .section4 {
+  text-align: center;
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+
+  background-color: #fff;
+  /* border: 1px solid grey; */
+  box-shadow: 0px 0px 2px 0px grey;
+  border-radius: 10px;
+  margin: 0px 20px 0 20px;
+}
+
+.partsPage-container .section4 div {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: rgb(237, 237, 237);
+
+  position: relative;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.partsPage-container .section4 div:hover {
+  background-color: rgb(210, 210, 210);
+}
+
+.partsPage-container .section4 span {
+  font-size: 3rem;
+  color: rgb(161, 161, 161);
+  position: absolute;
+
+  top: 0%;
+  left: 25%;
+}
+
+.partsPage-container .section4 h3 {
+  font-weight: 500;
+}
+
+.partsPage-container .section4 p {
+  font-size: 0.9rem;
+}
+
+.partsPage-container .section4 button {
+  color: #ffffff;
+  background-color: #1c5df6;
+
+  /* min-height: 60px;
+  width: 100%; */
+
+  padding: 13px;
+  border-radius: 10px;
+
+  font-weight: 600;
+  border: none;
+  outline: none;
+
+  transition: background-color 0.2s ease;
+}
+
+.partsPage-container .section4 button:hover {
+  background-color: #1649c4;
+  cursor: pointer;
+}
+
+
+.partsPage-container .section3a {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+
+  gap: 100px;
+  padding: 15px;
+  padding-top: 25px;
+  margin: 0px 20px 0 20px;
+
+  background-color: #fff;
+  box-shadow: 0px 0px 2px 0px grey;
+  border-radius: 10px;
+}
+
+.partsPage-container .section3a ul {
+  list-style: none;
+}

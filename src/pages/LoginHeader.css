@@ -1,0 +1,29 @@
+.loginHeader-container {
+  max-width: 768px;
+
+  margin-inline: 20px; /* left and right margin */
+  padding: 0 25px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  /* Optional: center horizontally */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loginHeader-container img {
+  height: 150px;
+}
+
+.loginHeader-container h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.loginHeader-container p {
+  color: rgb(95, 95, 95);
+  text-align: center;
+}

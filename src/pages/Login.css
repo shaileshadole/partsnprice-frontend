@@ -1,0 +1,106 @@
+.login-container {
+  max-width: 465px;
+  background-color: #fff;
+
+  margin-inline: 20px; /* left and right margin */
+  margin-top: 30px;
+  padding: 35px 25px;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #cbcbcb;
+
+  /* Optional: center horizontally */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .login-container {
+    margin: 30px 20px;
+  }
+}
+
+
+.login-container h3 {
+  font-weight: 500;
+  text-align: center;
+}
+
+.login-container p {
+  color: rgb(95, 95, 95);
+  margin-bottom: 15px;
+  text-align: center;
+
+  font-size: 0.89rem;
+}
+
+.login-container label {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.login-container .input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.login-container input {
+  height: 40px;
+  width: 100%;
+
+  padding: 0 35px 0 10px; /* Top/Bottom 0, Right 35px for icon, Left 10px for text */
+  line-height: 40px; /* Helps center text vertically */
+
+
+  border-radius: 5px;
+  border-color: rgba(147, 147, 147, 0.2);
+
+  outline-color: #0e33c6;
+  margin-bottom: 15px;
+}
+
+.login-container .input-icon-right {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-90%);
+  color: #010512;
+  cursor: pointer;
+}
+
+/* .login-container .toggle-password {
+  cursor: pointer;
+  margin-left: 10px;
+} */
+
+.login-container button {
+  color: #ffffff;
+  background-color: #1c5df6;
+
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  border: none;
+  outline: none;
+
+  transition: background-color 0.2s ease;
+}
+
+.login-container button:hover {
+  background-color: #1649c4;
+  cursor: pointer;
+}
+
+.login-container form p span {
+  color: #1c5df6;
+  cursor: pointer;
+}
+
+.login-container .login-container-footer{
+  font-size: 11rem;
+}
