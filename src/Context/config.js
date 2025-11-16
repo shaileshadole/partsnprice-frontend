@@ -1,0 +1,1 @@
+export const server1 = import.meta.env.VITE_SERVER_URL;

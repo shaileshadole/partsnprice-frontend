@@ -52,8 +52,13 @@ const GlobalPart = () => {
 
   return (
     <>
-      {/* {showPP ? <PartModel /> : null} */}
-      {showPP ? <PartModel showPP={showPP} setShowPP={setShowPP} /> : null}
+      {showPP ? <PartModel 
+        showPP={showPP} 
+        setShowPP={setShowPP}
+        onEditSuccess={(newPart) => {
+          setPartsArray(prev => [newPart, ...prev]);
+        }}
+        /> : null}
       <div className="global-container">
         <Header />
         <hr />
@@ -106,6 +111,11 @@ const GlobalPart = () => {
                         setPartsArray((prev) =>
                           prev.filter((p) => p._id !== id)
                         );
+                      }}
+                      onEditSuccess={(updatedPart) => {
+                        setPartsArray(prev => prev.map(
+                          p => p._id === updatedPart._id ? updatedPart : p
+                        ));
                       }}
                     />
                   </li>

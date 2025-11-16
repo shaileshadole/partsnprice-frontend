@@ -1,3 +1,4 @@
+// Card1 -> Dabbe of Total part Cost Bill paid
 import React from 'react';
 import "./Card1.css";
 

@@ -1,3 +1,4 @@
+// Card2 -> Patii to show Project Block
 import React from "react";
 import "./Card2.css";
 import { useNavigate } from "react-router-dom";

@@ -3,9 +3,11 @@ import { createContext, StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
+import { server1 } from "./Context/config.js";
 
-export const server = "http://localhost:4000/api/v1";
+// export const server = "http://localhost:4000/api/v1";
 // export const server = "https://partsnprice-backend.onrender.com/api/v1";
+export const server = server1;
 
 
 export const Context = createContext({ isAuthenticated: false });

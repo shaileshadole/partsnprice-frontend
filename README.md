@@ -10,3 +10,14 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+Project Model -> Form to make new Project
+ShowCP -> Show Form to make new Project
+Part Model -> Form to make new Part
+ShowPP -> Show Form to make new Part
+
+Card1 -> Dabbe of Total part Cost Bill paid
+Card2 -> Patii to show Project Block
+Card3 -> Patti to show all Global parts
+Card4 -> Patti to show Part Block in Project details

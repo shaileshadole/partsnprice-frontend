@@ -19,7 +19,7 @@ const ProjectDetails = () => {
 
   //use it to pass in Card1
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [totalCost, setTotalCost] = useState(0);
+  const [totalCost, setTotalCost] = useState(0); 
 
   const navigate = useNavigate();
 

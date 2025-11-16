@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./PartModel.css";
 import { Context } from "../main";
 import Loader from "./Loader";
@@ -7,33 +7,64 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { server } from "../main";
 
-const PartModel = ({ showPP, setShowPP }) => {
+const PartModel = ({
+  showPP,
+  setShowPP,
+  isEdit = false,
+  existingData = {},
+  onEditSuccess,
+}) => {
   const [title, setTitle] = useState("");
   const [rate, setRate] = useState("");
   const [link, setLink] = useState("");
   const { loading, setLoading } = useContext(Context);
 
+  useEffect(() => {
+    if (isEdit) {
+      setTitle(existingData.title || "");
+      setRate(existingData.rate || "");
+      setLink(existingData.link || "");
+    }
+  }, [isEdit, existingData]); 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      setLoading(true);
-      const res = await axios.post(
-        `${server}/part/new`,
-        {
-          title,
-          link,
-          rate: parseFloat(rate),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
+      if(isEdit){
+        //EDIT API
+        const res = await axios.put(
+          `${server}/part/${existingData._id}`,
+          {title, rate, link},
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true
+          });
+        
+        toast.success("Part Updated Successfully!");
+        onEditSuccess && onEditSuccess(res.data.updatedPart || res.data.part);
+        setShowPP(false);
+      }else{
+        //ADD API
+        const res = await axios.post(
+          `${server}/part/new`,
+          {
+            title,
+            link,
+            rate: parseFloat(rate),
           },
-          withCredentials: true,
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+        });
+        console.log(res);
+        toast.success(res.data.message);
+        onEditSuccess && onEditSuccess(res.data.part);
+      }
 
-      toast.success(res.data.message);
       setShowPP(false);
     } catch (error) {
       if (

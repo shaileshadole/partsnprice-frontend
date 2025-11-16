@@ -1,3 +1,4 @@
+// Card4 -> Patti to show Part Block in Project details
 import React, { useContext } from "react";
 import "./Card4.css";
 import { MdDelete } from "react-icons/md";
@@ -7,7 +8,7 @@ import axios from "axios";
 import { server } from "../main";
 import toast from "react-hot-toast";
 
-const Card4 = ({ partId, partTitle, partLink, partRate, quantity , onDeleteSuccess }) => {
+const  Card4 = ({ partId, partTitle, partLink, partRate, quantity , onDeleteSuccess }) => {
   const { setLoading } = useContext(Context);
 
   const handleClick = async () => {
