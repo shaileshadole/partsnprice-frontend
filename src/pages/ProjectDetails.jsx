@@ -132,6 +132,8 @@ const ProjectDetails = () => {
                   {partsArray.map((entry) => (
                     <li key={entry._id}>
                       <Card4
+                        partId={entry._id}
+                        projectId={projectId}
                         partTitle={entry.part.title}
                         partLink={entry.part.link}
                         partRate={entry.part.rate}

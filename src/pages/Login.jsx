@@ -10,13 +10,12 @@ import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
-import { useAuth } from "../Context/AuthContext.jsx";
+// import { useAuth } from "../Context/AuthContext.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // const [loading, setLoading] = useState(false);
 
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
     useContext(Context);

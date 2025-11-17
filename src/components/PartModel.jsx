@@ -44,6 +44,7 @@ const PartModel = ({
         
         toast.success("Part Updated Successfully!");
         onEditSuccess && onEditSuccess(res.data.updatedPart || res.data.part);
+        // onEditSuccess(res.data.part);
         setShowPP(false);
       }else{
         //ADD API
@@ -63,6 +64,7 @@ const PartModel = ({
         console.log(res);
         toast.success(res.data.message);
         onEditSuccess && onEditSuccess(res.data.part);
+        // onEditSuccess(res.data.part);
       }
 
       setShowPP(false);

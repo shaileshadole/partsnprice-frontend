@@ -8,11 +8,18 @@ import axios from "axios";
 import { server } from "../main";
 import toast from "react-hot-toast";
 
-const  Card4 = ({ partId, partTitle, partLink, partRate, quantity , onDeleteSuccess }) => {
+const Card4 = ({
+  projectId,
+  partId,
+  partTitle,
+  partLink,
+  partRate,
+  quantity,
+  onDeleteSuccess,
+}) => {
   const { setLoading } = useContext(Context);
 
   const handleClick = async () => {
-
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this part?"
     );
@@ -44,6 +51,50 @@ const  Card4 = ({ partId, partTitle, partLink, partRate, quantity , onDeleteSucc
     setLoading(false);
   };
 
+  //Increament by One
+  const incrementByOne = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.put(
+        `${server}/project/${projectId}/part/${partId}/plusone`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+
+      toast.success(res.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.response?.data?.message || "Failed to Increase by One"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  //Decrement by One
+  const decrementByOne = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.put(
+        `${server}/project/${projectId}/part/${partId}/minusone`,
+        {},
+        { withCredentials: true }
+      );
+
+      toast.success(res.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error?.response?.data?.message || "Failed to Decrease by One"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="card4-container">
       <div className="section1">
@@ -53,9 +104,9 @@ const  Card4 = ({ partId, partTitle, partLink, partRate, quantity , onDeleteSucc
         <h3>{partTitle}</h3>
         <div className="ccsection4">
           {/* <FiEdit className="editicon" /> */}
-          <button>-</button>
+          <button onClick={decrementByOne}>-</button>
           <span>{quantity}</span>
-          <button>+</button>
+          <button onClick={incrementByOne}>+</button>
           <MdDelete onClick={handleClick} className="deleteicon" />
         </div>
       </div>
@@ -68,7 +119,7 @@ const  Card4 = ({ partId, partTitle, partLink, partRate, quantity , onDeleteSucc
         </div>
       </div>
 
-        <div className="ccsection3">
+      <div className="ccsection3">
         <div>
           <h3 className="green">Total: </h3>
         </div>
