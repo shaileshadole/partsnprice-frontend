@@ -28,7 +28,10 @@ const PartModel = ({
   }, [isEdit, existingData]); 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();     
+    if(!title || !rate || !link) {
+      return toast.error("Please fill in all fields");
+    }
     setLoading(true);
 
     try {
@@ -45,9 +48,8 @@ const PartModel = ({
         toast.success("Part Updated Successfully!");
         onEditSuccess && onEditSuccess(res.data.updatedPart || res.data.part);
         // onEditSuccess(res.data.part);
-        setShowPP(false);
       }else{
-        //ADD API
+        //ADD API        
         const res = await axios.post(
           `${server}/part/new`,
           {
@@ -79,9 +81,9 @@ const PartModel = ({
       } else {
         toast.error(error.message || "Something went wrong");
       }
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
@@ -91,7 +93,7 @@ const PartModel = ({
         <div className="partModel-container">
           <form onSubmit={handleSubmit}>
             <div className="heading">
-              <h3>Create a Part</h3>
+              {isEdit ? <h3>Edit the Part</h3> : <h3>Create part</h3>}
               <ImCross className="icon" onClick={() => setShowPP(false)} />
             </div>
 
@@ -130,7 +132,7 @@ const PartModel = ({
               />
             </div>
 
-            <button>Create Part</button>
+            <button>{isEdit ? "Update Part" : "Create Part"}</button>
           </form>
         </div>
       </div>

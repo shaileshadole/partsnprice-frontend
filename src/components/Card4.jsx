@@ -15,11 +15,10 @@ const Card4 = ({
   partLink,
   partRate,
   quantity,
-  onDeleteSuccess,
 }) => {
   const { setLoading } = useContext(Context);
 
-  const handleClick = async () => {
+  const handleDelete = async () => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this part?"
     );
@@ -27,26 +26,18 @@ const Card4 = ({
 
     setLoading(true);
     try {
-      const res = await axios.delete(`${server}/part/${partId}`, {
+      const res = await axios.delete(`${server}/project/${projectId}/part/${partId}`, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       });
 
-      toast.success("Deleted Successfully!");
-      onDeleteSuccess(partId);
+      toast.success(res.data.message);
+      // onDeleteSuccess(partId);
     } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        toast.error(error.response.data.message);
-        console.log(error);
-      } else {
-        toast.error(error.message || "Something went wrong");
-      }
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Failed to delete part of Project");
     }
     setLoading(false);
   };
@@ -63,7 +54,7 @@ const Card4 = ({
         }
       );
 
-      toast.success(res.message);
+      toast.success(res.data.message);  
     } catch (error) {
       console.log(error);
       toast.error(
@@ -84,7 +75,7 @@ const Card4 = ({
         { withCredentials: true }
       );
 
-      toast.success(res.message);
+      toast.success(res.data.message);
     } catch (error) {
       console.log(error);
       toast.error(
@@ -107,7 +98,7 @@ const Card4 = ({
           <button onClick={decrementByOne}>-</button>
           <span>{quantity}</span>
           <button onClick={incrementByOne}>+</button>
-          <MdDelete onClick={handleClick} className="deleteicon" />
+          <MdDelete onClick={handleDelete} className="deleteicon" />
         </div>
       </div>
       <div className="ccsection3">
