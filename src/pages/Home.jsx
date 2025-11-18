@@ -14,6 +14,8 @@ import PartModel from "../components/PartModel";
 
 const Home = () => {
   const [projectArray, setProjectArray] = useState([]);
+  const [filteredArray, setFilteredArray] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
   const [showCP, setShowCP] = useState(false);
   const [showPP, setShowPP] = useState(false);
   const navigate = useNavigate();
@@ -31,17 +33,10 @@ const Home = () => {
       });
 
       setProjectArray(res.data.projects);
+      setFilteredArray(res.data.projects);
     } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        toast.error(error.response.data.message);
-        console.log(error);
-      } else {
-        toast.error(error.message || "Something went wrong");
-      }
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Failed to fetch Project!");
     }
 
     setLoading(false);
@@ -50,6 +45,16 @@ const Home = () => {
   useEffect(() => {
     fetchProject();
   }, [isAuthenticated]);
+
+  //Search Logic
+  useEffect(() => {
+    const filtered = projectArray.filter(
+      (campaign) =>
+        campaign.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+        campaign.description.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+    setFilteredArray(filtered);
+  }, [searchKeyword, projectArray]);
 
   return (
     <>
@@ -78,7 +83,11 @@ const Home = () => {
         </div>
         <div className="section2">
           <CiSearch className="input-icon-right" />
-          <input placeholder="Search Projects..." />
+          <input
+            placeholder="Search Projects..."
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+          />
         </div>
         <div className="diva">
           {projectArray.length == 0 ? (
@@ -95,7 +104,7 @@ const Home = () => {
           ) : (
             <div className="section3a">
               <ul>
-                {projectArray.map((project) => (
+                {filteredArray.map((project) => (
                   <li key={project._id}>
                     <Card2
                       projectId={project._id}
