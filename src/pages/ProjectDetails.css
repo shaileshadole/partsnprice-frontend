@@ -16,7 +16,8 @@
 .partsPage-container .section1 {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 20px;
   margin-top: 20px;
 }
@@ -48,6 +49,25 @@
   margin-bottom: 10px;
 
   color: rgb(89, 89, 89);
+}
+
+.partsPage-container .section1 .section1b {
+  max-width: 690px;
+}
+
+.partsPage-container .section1 .section1c {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.partsPage-container .section1 .section1c .del {
+  color: red;
+  border-color: red;
+}
+
+.partsPage-container .section1 .section1c .del:hover {
+  background-color: rgb(255, 199, 199);;
 }
 
 /* Parent container for the cards */

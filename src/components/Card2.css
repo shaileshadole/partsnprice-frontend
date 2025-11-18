@@ -30,13 +30,25 @@
     margin-bottom: 10px;
 }
 
+.card2-container .section2 p{
+  font-size: 0.90rem;
+  color: #555;
+  max-width: 450px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .card2-container .section3 .red{
-    color: rgb(222, 23, 23);
+    color: rgb(159, 0, 0);
     font-weight: 600;
 }
 
 .card2-container .section3 .green{
-    color: rgb(42, 194, 113);
+    color: rgb(103, 58, 10);
         font-weight: 600;
 }
 

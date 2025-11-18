@@ -59,6 +59,7 @@ const Home = () => {
           showCP={showCP}
           setShowCP={setShowCP}
           fetchProject={fetchProject}
+          isEdit={false}
         />
       ) : null}
       {showPP ? <PartModel showPP={showPP} setShowPP={setShowPP} /> : null}

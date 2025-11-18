@@ -10,11 +10,14 @@ import Card3 from "../components/Card3";
 import Loader from "../components/Loader";
 import AddPartPopup from "../components/AddPartPopup";
 import Card4 from "../components/Card4";
+import toast from "react-hot-toast";
+import ProjectModel from "../components/ProjectModel";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
   const [showPartModal, setShowPartModal] = useState(false);
+  const [ showEditProjectModel, setShowEditProjectModel ] = useState(false);
   const [partsArray, setPartsArray] = useState([]);
 
   //use it to pass in Card1
@@ -25,6 +28,7 @@ const ProjectDetails = () => {
 
   const { loading, setLoading } = useContext(Context);
 
+  //Calculating for Card1
   const calculateTotals = (parts) => {
     let quantitySum = 0;
     let costSum = 0;
@@ -38,6 +42,7 @@ const ProjectDetails = () => {
     setTotalCost(costSum);
   };
 
+  //Fetching the project
   const fetchSpecificProject = async () => {
     setLoading(true);
     try {
@@ -65,6 +70,53 @@ const ProjectDetails = () => {
     fetchSpecificProject();
   }, []);
 
+  //Deleting the project
+  const deleteProject = async () => {
+
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this Project?"
+    );
+    if (!confirmDelete) return;
+
+    try{
+      setLoading(true);
+
+      const res= await axios.delete(`${server}/project/${projectId}`, {
+        withCredentials: true,
+      });
+
+      toast.success(res.data.message);
+      navigate("/");
+    }catch(error){
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Failed to delete project!");
+    }finally{
+      setLoading(false);
+    }
+  }
+
+  // //Updating the project
+  // const updateProject = async () => {
+  //   try{
+  //     setLoading(true);
+
+  //     const res = await axios.put(`${server}/project/${projectId}`)
+
+  //   }catch(error){
+  //     console.log(error);
+  //     toast.error(error?.response?.data?.message || "Failed to update project!");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
+  //Updating the project
+  const updateProject = () => {
+    setShowEditProjectModel(true);
+  }
+
+
+
   return (
     <>
       {loading ? <Loader /> : null}
@@ -74,6 +126,21 @@ const ProjectDetails = () => {
         projectId={projectId}
         onPartAdded={fetchSpecificProject}
       />
+
+      {showEditProjectModel ? (
+        <ProjectModel
+          showCP={showEditProjectModel}
+          setShowCP={setShowEditProjectModel}
+          fetchProject={fetchSpecificProject}
+          existingData={{
+            projectId: project._id,
+            name: project.name,
+            description: project.description,
+            submitDate: project.submitDate,
+          }}
+          isEdit={true}
+        />
+      ) : null}
 
       <div className="partsPage-container">
         <Header />
@@ -86,9 +153,13 @@ const ProjectDetails = () => {
                 <h4> Back to project </h4>
               </button>
             </div>
-            <div>
+            <div className="section1b">
               <h3>{project ? project.name : "Loading..."}</h3>
               <p>{project ? project.description : ""}</p>
+            </div>
+            <div className="section1c">
+              <button onClick={() => setShowEditProjectModel(true)}>Update Project</button>
+              <button className="del" onClick={(deleteProject)}>Delete Project</button>
             </div>
           </div>
 
@@ -138,6 +209,7 @@ const ProjectDetails = () => {
                         partLink={entry.part.link}
                         partRate={entry.part.rate}
                         quantity={entry.quantity}
+                        fetchSpecificProject={fetchSpecificProject}
                       />
                     </li>
                   ))}

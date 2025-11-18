@@ -56,17 +56,8 @@ const Login = () => {
 
       navigate("/");
     } catch (error) {
-      setIsAuthenticated(true);
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        toast.error(error.response.data.message);
-        console.log(error);
-      } else {
-        toast.error(error.message || "Something went wrong");
-      }
+      setIsAuthenticated(false);
+      toast.error(error?.response?.data?.message || "Failed to Login!");
     } finally {
       setLoading(false);
     }

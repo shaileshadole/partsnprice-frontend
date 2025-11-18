@@ -15,6 +15,7 @@ const Card4 = ({
   partLink,
   partRate,
   quantity,
+  fetchSpecificProject
 }) => {
   const { setLoading } = useContext(Context);
 
@@ -34,6 +35,7 @@ const Card4 = ({
       });
 
       toast.success(res.data.message);
+      fetchSpecificProject();
       // onDeleteSuccess(partId);
     } catch (error) {
       console.log(error);
@@ -55,6 +57,7 @@ const Card4 = ({
       );
 
       toast.success(res.data.message);  
+      fetchSpecificProject();
     } catch (error) {
       console.log(error);
       toast.error(
@@ -76,6 +79,7 @@ const Card4 = ({
       );
 
       toast.success(res.data.message);
+      fetchSpecificProject();
     } catch (error) {
       console.log(error);
       toast.error(
