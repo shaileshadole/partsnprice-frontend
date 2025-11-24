@@ -190,12 +190,12 @@ const ProjectDetails = () => {
           <div className="diva2">
             {partsArray.length == 0 ? (
               <div className="section4">
-                <div onClick={() => setShowCP(true)}>
+                <div onClick={() => setShowPartModal(true)}>
                   <span>+</span>
                 </div>
                 <h3>No Parts Added Yet</h3>
                 <p>Start building your project by adding components</p>
-                <button onClick={() => setShowCP(true)}>Add First Part</button>
+                <button onClick={() => setShowPartModal(true)}>Add First Part</button>
               </div>
             ) : (
               <div className="section3a">
