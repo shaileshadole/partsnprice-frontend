@@ -1,23 +1,131 @@
-# React + Vite
+# PartsNPrice Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js) 
+![Express.js](https://img.shields.io/badge/Express.js-4.x-lightgrey?logo=express) 
+![MongoDB](https://img.shields.io/badge/MongoDB-6.x-brightgreen?logo=mongodb) 
+![Render](https://img.shields.io/badge/Deployed%20on-Render-blue?logo=render)
 
-Currently, two official plugins are available:
+A React + Vite application for managing hardware projects and parts. Users can create projects, add components, track quantities and calculate total cost.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Create, edit, delete projects
+* Add and manage global parts
+* Add project-specific parts and update quantities
+* Automatic calculation of total cost and item counts
+* Secure authentication using JWT & cookies
+* Backend integration (Node.js + Express + MongoDB)
+
+---
+
+## 📂 Tech Stack
+
+* **Frontend:** React.js, Vite, Axios, React Router, Context API, React Hot Toast
+* **Backend:** Node.js, Express.js, MongoDB, Mongoose
+* **Styling:** CSS / custom components
+* **Hosting:** Vercel (Frontend) + Render (Backend)
+
+---
+
+## 🔧 Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+ git clone https://github.com/shaileshadole/PartsNPrice-frontend.git
+ cd PartsNPrice-frontend
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+ npm install
+```
+
+### 3️⃣ Create Environment File
+
+Create a `.env` file in root:
+
+```bash
+VITE_SERVER=https://partsnprice-backend.onrender.com/api/v1
+```
+
+### 4️⃣ Start Development Server
+
+```bash
+ npm run dev
+```
+
+Frontend will run at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🔗 API Integration
+
+All API requests use Axios with credentials:
+
+```js
+axios.get(`${server}/project/all`, { withCredentials: true })
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+ ├─ components/
+ ├─ pages/
+ ├─ context/
+ ├─ main.jsx
+ ├─ App.jsx
+ ├─ styles
+```
+
+---
+
+## 🌍 Deployment
+
+### Deploy on Vercel
+
+```bash
+npm run build
+```
+
+Upload `dist` folder or connect GitHub repo.
 
 
-Project Model -> Form to make new Project
-ShowCP -> Show Form to make new Project
-Part Model -> Form to make new Part
-ShowPP -> Show Form to make new Part
+---
 
-Card1 -> Dabbe of Total part Cost Bill paid
-Card2 -> Patii to show Project Block
-Card3 -> Patti to show all Global parts
-Card4 -> Patti to show Part Block in Project details
+## ✨ Future Enhancements
+
+* Image upload instead of link
+* Export project as PDF
+* Sharing feature
+
+---
+
+## 🧑‍💻 Author
+
+**Shailesh Adole**  
+GitHub: [shaileshadole](https://github.com/shaileshadole)
+
+---
+
+## 🚀 Let's Connect
+
+- 🌐 [LinkedIn](https://www.linkedin.com/in/shailesh-adole-01306a303/)
+- ✉️ [Email](adoleshailesh2@gmail.com)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
