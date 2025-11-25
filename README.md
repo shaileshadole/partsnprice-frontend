@@ -1,10 +1,11 @@
 # PartsNPrice Frontend
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js) 
-![Express.js](https://img.shields.io/badge/Express.js-4.x-lightgrey?logo=express) 
-![MongoDB](https://img.shields.io/badge/MongoDB-6.x-brightgreen?logo=mongodb) 
-![Render](https://img.shields.io/badge/Deployed%20on-Render-blue?logo=render)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white&labelColor=20232a)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React Router](https://img.shields.io/badge/React%20Router-6-CA4245?logo=reactrouter&logoColor=white)](https://reactrouter.com/)
+[![Axios](https://img.shields.io/badge/Axios-HTTP%20Client-5A29E4?logo=axios&logoColor=white)](https://axios-http.com/)
+![CSS Modules](https://img.shields.io/badge/CSS-Modules-DB7093)
 
 A React + Vite application for managing hardware projects and parts. Users can create projects, add components, track quantities and calculate total cost.
 
@@ -67,16 +68,6 @@ http://localhost:5173
 
 ---
 
-## 🔗 API Integration
-
-All API requests use Axios with credentials:
-
-```js
-axios.get(`${server}/project/all`, { withCredentials: true })
-```
-
----
-
 ## 📁 Folder Structure
 
 ```
@@ -116,6 +107,12 @@ Upload `dist` folder or connect GitHub repo.
 
 **Shailesh Adole**  
 GitHub: [shaileshadole](https://github.com/shaileshadole)
+
+---
+
+## 🔗 Related Repositories
+
+[PartsNPrice Backend](https://github.com/shaileshadole/partsnprice-backend)
 
 ---
 
