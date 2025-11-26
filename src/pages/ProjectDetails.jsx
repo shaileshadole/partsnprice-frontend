@@ -260,35 +260,39 @@ const ProjectDetails = () => {
             )}
           </div>
 
-          {/* Bill Payment List */}
-          <div className="section3">
-            <h4>Bill Payment</h4>
-          </div>
+          {partsArray.length == 0 ? null : (
+            <>
+              {/* Bill Payment List */}
+              <div className="section3">
+                <h4>Bill Payment</h4>
+              </div>
 
-          <div className="diva2">
-            <div className="section3a">
-              <BillForm
-                projectId={projectId}
-                fetchPaymentArray={fetchPaymentArray}
-              />
-              {paymentArray.length == 0 ? null : (
-                <>
-                  <ul>
-                    {paymentArray.map((entry) => (
-                      <li key={entry._id}>
-                        <BillPatti
-                          fetchPaymentArray={fetchPaymentArray}
-                          amount={entry.amount}
-                          date={entry.date}
-                          id={entry._id}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          </div>
+              <div className="diva2">
+                <div className="section3a">
+                  <BillForm
+                    projectId={projectId}
+                    fetchPaymentArray={fetchPaymentArray}
+                  />
+                  {paymentArray.length == 0 ? null : (
+                    <>
+                      <ul>
+                        {paymentArray.map((entry) => (
+                          <li key={entry._id}>
+                            <BillPatti
+                              fetchPaymentArray={fetchPaymentArray}
+                              amount={entry.amount}
+                              date={entry.date}
+                              id={entry._id}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

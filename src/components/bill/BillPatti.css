@@ -40,6 +40,11 @@
   transition: all 0.4s ease;
 }
 
+.billpatti_main button:hover{
+      background-color: rgb(237, 46, 46);
+      cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .billpatti_main{
         flex-direction: column;
