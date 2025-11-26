@@ -25,6 +25,7 @@ const ProjectDetails = () => {
   //use it to pass in Card1
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
+  const [totalPaymentTillNow, setTotalPaymentTillNow] = useState(0);
 
   const navigate = useNavigate();
 
@@ -42,6 +43,17 @@ const ProjectDetails = () => {
 
     setTotalQuantity(quantitySum);
     setTotalCost(costSum);
+  };
+
+  //Calculating the total payment till now
+  const calculatePaymentTillNow = (payment) => {
+    let totalSum = 0;
+
+    payment.forEach((entry) => {
+      totalSum += Number(entry.amount);
+    });
+
+    setTotalPaymentTillNow(totalSum);
   };
 
   //Fetching the project
@@ -127,6 +139,7 @@ const ProjectDetails = () => {
       });
 
       setPaymentArray(res.data.paymentArray);
+      calculatePaymentTillNow(res.data.paymentArray);
       // toast.success(res.data.message);
       // console.log(res.data.paymentArray);
     } catch (error) {
@@ -196,10 +209,14 @@ const ProjectDetails = () => {
               c1Number={totalCost}
               c1Des={"Project Budget"}
             />
-            <Card1 c1heading={"Bill Paid"} c1Number={0} c1Des={"Paise Aale"} />
+            <Card1
+              c1heading={"Bill Paid"}
+              c1Number={totalPaymentTillNow}
+              c1Des={"Paise Aale"}
+            />
             <Card1
               c1heading={"Bill Remaining"}
-              c1Number={totalCost - 0}
+              c1Number={totalCost - totalPaymentTillNow}
               c1Des={"Baaki Aahe"}
             />
           </div>
