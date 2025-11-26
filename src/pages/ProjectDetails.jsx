@@ -203,11 +203,11 @@ const ProjectDetails = () => {
                   {partsArray.map((entry) => (
                     <li key={entry._id}>
                       <Card4
-                        partId={entry.part._id}
+                        partId={entry.part?entry.part._id:null}
                         projectId={projectId}
-                        partTitle={entry.part.title}
-                        partLink={entry.part.link}
-                        partRate={entry.part.rate}
+                        partTitle={entry.part?.title}
+                        partLink={entry.part?.link}
+                        partRate={entry.part?.rate}
                         quantity={entry.quantity}
                         fetchSpecificProject={fetchSpecificProject}
                       />

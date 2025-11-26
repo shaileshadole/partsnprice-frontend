@@ -77,7 +77,7 @@ const Home = () => {
             <p>Manage your hardware projects and components</p>
           </div>
           <div className="div2">
-            <button onClick={() => navigate("/parts")}>+ New Component</button>
+            <button onClick={() => navigate("/parts")}>+ Global Part</button>
             <button onClick={() => setShowCP(true)}>+ New Project</button>
           </div>
         </div>

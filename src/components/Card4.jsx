@@ -15,7 +15,7 @@ const Card4 = ({
   partLink,
   partRate,
   quantity,
-  fetchSpecificProject
+  fetchSpecificProject,
 }) => {
   const { setLoading } = useContext(Context);
 
@@ -27,19 +27,24 @@ const Card4 = ({
 
     setLoading(true);
     try {
-      const res = await axios.delete(`${server}/project/${projectId}/part/${partId}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
+      const res = await axios.delete(
+        `${server}/project/${projectId}/part/${partId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
 
       toast.success(res.data.message);
       fetchSpecificProject();
       // onDeleteSuccess(partId);
     } catch (error) {
       console.log(error);
-      toast.error(error?.response?.data?.message || "Failed to delete part of Project");
+      toast.error(
+        error?.response?.data?.message || "Failed to delete part of Project"
+      );
     }
     setLoading(false);
   };
@@ -56,7 +61,7 @@ const Card4 = ({
         }
       );
 
-      toast.success(res.data.message);  
+      toast.success(res.data.message);
       fetchSpecificProject();
     } catch (error) {
       console.log(error);
@@ -91,38 +96,48 @@ const Card4 = ({
   };
 
   return (
-    <div className="card4-container">
-      <div className="section1">
-        <img src={partLink} alt="partTitle" />
-      </div>
-      <div className="ccsection2">
-        <h3>{partTitle}</h3>
-        <div className="ccsection4">
-          {/* <FiEdit className="editicon" /> */}
-          <button onClick={decrementByOne}>-</button>
-          <span>{quantity}</span>
-          <button onClick={incrementByOne}>+</button>
-          <MdDelete onClick={handleDelete} className="deleteicon" />
+    <>
+      {partId == null ? (
+        <div className="card4-container">
+          <div className="broken-part">
+            <p>⚠️ This component was deleted from Global Parts</p>
+          </div>
         </div>
-      </div>
-      <div className="ccsection3">
-        <div>
-          <h3 className="red">Rate: </h3>
-        </div>
-        <div>
-          <h3 className="red">₹{partRate} </h3>
-        </div>
-      </div>
+      ) : (
+        <div className="card4-container">
+          <div className="section1">
+            <img src={partLink} alt="partTitle" />
+          </div>
+          <div className="ccsection2">
+            <h3>{partTitle}</h3>
+            <div className="ccsection4">
+              {/* <FiEdit className="editicon" /> */}
+              <button onClick={decrementByOne}>-</button>
+              <span>{quantity}</span>
+              <button onClick={incrementByOne}>+</button>
+              <MdDelete onClick={handleDelete} className="deleteicon" />
+            </div>
+          </div>
+          <div className="ccsection3">
+            <div>
+              <h3 className="red">Rate: </h3>
+            </div>
+            <div>
+              <h3 className="red">₹{partRate} </h3>
+            </div>
+          </div>
 
-      <div className="ccsection3">
-        <div>
-          <h3 className="green">Total: </h3>
+          <div className="ccsection3">
+            <div>
+              <h3 className="green">Total: </h3>
+            </div>
+            <div>
+              <h3 className="green">₹{partRate * quantity} </h3>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 className="green">₹{partRate * quantity} </h3>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
