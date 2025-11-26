@@ -36,7 +36,8 @@ const Home = () => {
       setFilteredArray(res.data.projects);
     } catch (error) {
       console.log(error);
-      toast.error(error?.response?.data?.message || "Failed to fetch Project!");
+      // Nira login first login first cha error yet rahte
+      // toast.error(error?.response?.data?.message || "Failed to fetch Project!");
     }
 
     setLoading(false);

@@ -6,23 +6,25 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import Card1 from "../components/Card1";
 import axios from "axios";
 import { Context, server } from "../main";
-import Card3 from "../components/Card3";
 import Loader from "../components/Loader";
 import AddPartPopup from "../components/AddPartPopup";
 import Card4 from "../components/Card4";
 import toast from "react-hot-toast";
 import ProjectModel from "../components/ProjectModel";
+import BillForm from "../components/bill/BillForm";
+import BillPatti from "../components/bill/BillPatti";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
   const [showPartModal, setShowPartModal] = useState(false);
-  const [ showEditProjectModel, setShowEditProjectModel ] = useState(false);
+  const [showEditProjectModel, setShowEditProjectModel] = useState(false);
   const [partsArray, setPartsArray] = useState([]);
+  const [paymentArray, setPaymentArray] = useState([]);
 
   //use it to pass in Card1
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [totalCost, setTotalCost] = useState(0); 
+  const [totalCost, setTotalCost] = useState(0);
 
   const navigate = useNavigate();
 
@@ -68,32 +70,34 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     fetchSpecificProject();
+    fetchPaymentArray();
   }, []);
 
   //Deleting the project
   const deleteProject = async () => {
-
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this Project?"
     );
     if (!confirmDelete) return;
 
-    try{
+    try {
       setLoading(true);
 
-      const res= await axios.delete(`${server}/project/${projectId}`, {
+      const res = await axios.delete(`${server}/project/${projectId}`, {
         withCredentials: true,
       });
 
       toast.success(res.data.message);
       navigate("/");
-    }catch(error){
+    } catch (error) {
       console.log(error);
-      toast.error(error?.response?.data?.message || "Failed to delete project!");
-    }finally{
+      toast.error(
+        error?.response?.data?.message || "Failed to delete project!"
+      );
+    } finally {
       setLoading(false);
     }
-  }
+  };
 
   // //Updating the project
   // const updateProject = async () => {
@@ -113,9 +117,23 @@ const ProjectDetails = () => {
   //Updating the project
   const updateProject = () => {
     setShowEditProjectModel(true);
-  }
+  };
 
+  //Fetching the Payment Array
+  const fetchPaymentArray = async () => {
+    try {
+      const res = await axios.get(`${server}/payment/${projectId}`, {
+        withCredentials: true,
+      });
 
+      setPaymentArray(res.data.paymentArray);
+      // toast.success(res.data.message);
+      // console.log(res.data.paymentArray);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Failed to fetch Projecct");
+    }
+  };
 
   return (
     <>
@@ -158,8 +176,12 @@ const ProjectDetails = () => {
               <p>{project ? project.description : ""}</p>
             </div>
             <div className="section1c">
-              <button onClick={() => setShowEditProjectModel(true)}>Update Project</button>
-              <button className="del" onClick={(deleteProject)}>Delete Project</button>
+              <button onClick={() => setShowEditProjectModel(true)}>
+                Update Project
+              </button>
+              <button className="del" onClick={deleteProject}>
+                Delete Project
+              </button>
             </div>
           </div>
 
@@ -182,6 +204,7 @@ const ProjectDetails = () => {
             />
           </div>
 
+          {/* Component list */}
           <div className="section3">
             <h4>Components</h4>
             <button onClick={() => setShowPartModal(true)}>+ Add Part</button>
@@ -195,7 +218,9 @@ const ProjectDetails = () => {
                 </div>
                 <h3>No Parts Added Yet</h3>
                 <p>Start building your project by adding components</p>
-                <button onClick={() => setShowPartModal(true)}>Add First Part</button>
+                <button onClick={() => setShowPartModal(true)}>
+                  Add First Part
+                </button>
               </div>
             ) : (
               <div className="section3a">
@@ -203,7 +228,7 @@ const ProjectDetails = () => {
                   {partsArray.map((entry) => (
                     <li key={entry._id}>
                       <Card4
-                        partId={entry.part?entry.part._id:null}
+                        partId={entry.part ? entry.part._id : null}
                         projectId={projectId}
                         partTitle={entry.part?.title}
                         partLink={entry.part?.link}
@@ -216,6 +241,36 @@ const ProjectDetails = () => {
                 </ul>
               </div>
             )}
+          </div>
+
+          {/* Bill Payment List */}
+          <div className="section3">
+            <h4>Bill Payment</h4>
+          </div>
+
+          <div className="diva2">
+            <div className="section3a">
+              <BillForm
+                projectId={projectId}
+                fetchPaymentArray={fetchPaymentArray}
+              />
+              {paymentArray.length == 0 ? null : (
+                <>
+                  <ul>
+                    {paymentArray.map((entry) => (
+                      <li key={entry._id}>
+                        <BillPatti
+                          fetchPaymentArray={fetchPaymentArray}
+                          amount={entry.amount}
+                          date={entry.date}
+                          id={entry._id}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

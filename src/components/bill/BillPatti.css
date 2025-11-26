@@ -1,0 +1,50 @@
+.billpatti_main{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 80%;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  padding: 20px;
+  margin: 0 auto 20px auto; /* ✅ Center it horizontally */
+
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-left: 4px solid #4a6fa5;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.billpatti_main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.billpatti_main button{
+  padding: 2px 20px;
+  margin: 0 5px;
+
+  border: none;
+  color: #fff;
+  background-color: rgb(222, 23, 23);
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  max-width: 120px;
+
+  border-radius: 4px;
+  transition: all 0.4s ease;
+}
+
+@media (max-width: 768px) {
+    .billpatti_main{
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+}

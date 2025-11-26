@@ -1,0 +1,51 @@
+.billForm_maindiv form {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto 20px auto; /* ✅ Center it horizontally */
+}
+
+.billForm_maindiv form input {
+  height: 40px;
+  width: 100%;
+
+  padding: 0 10px 0 10px;
+  line-height: 40px;
+
+  border-radius: 5px;
+  border-color: rgba(147, 147, 147, 0.2);
+
+  outline-color: #0e33c6;
+  margin-bottom: 15px;
+}
+
+.billForm_maindiv form button {
+  color: #ffffff;
+  background-color: #1c5df6;
+
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+
+  font-weight: 600;
+  border: none;
+  outline: none;
+
+  transition: background-color 0.2s ease;
+}
+
+.billForm_maindiv form button:hover {
+  background-color: #1649c4;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .billForm_maindiv form {
+    flex-direction: column;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+}
