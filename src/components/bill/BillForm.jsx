@@ -21,18 +21,21 @@ const BillForm = ({ projectId, fetchPaymentArray }) => {
         {
           amount,
           date,
-        },{
-            withCredentials: true,
+        },
+        {
+          withCredentials: true,
         }
       );
 
       toast.success(res.data.message);
+      setDate("");
+      setAmount("");
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || "Failed to add Payment");
     } finally {
-        setLoading(false);
-        fetchPaymentArray();
+      setLoading(false);
+      fetchPaymentArray();
     }
   };
 
@@ -41,10 +44,15 @@ const BillForm = ({ projectId, fetchPaymentArray }) => {
       <form onSubmit={addPayment}>
         <input
           type="number"
+          value={amount}
           placeholder="Enter amount"
           onChange={(e) => setAmount(e.target.value)}
         />
-        <input type="date" onChange={(e) => setDate(e.target.value)} />
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
         <button>Submit</button>
       </form>
     </div>
